@@ -1,0 +1,17 @@
+{% extends 'add_layout.html'%}
+
+{% block title%}
+    <title></title>
+{% endblock%}
+
+{%block card-title%}{%endblock%}
+
+
+{% block card-body%}
+
+{%endblock%}
+
+
+    
+
+    

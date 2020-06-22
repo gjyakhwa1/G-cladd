@@ -1,0 +1,18 @@
+{% extends 'detail_layout.html'%}
+
+{% block title%}
+    <title></title>
+{% endblock%}
+
+    {%block left-title%}{%endblock%}
+    {% block left%}
+    
+    {%endblock%}
+
+
+    {%block right-title%}{%endblock%}
+    {%block right%}
+
+    {%endblock%}
+
+    

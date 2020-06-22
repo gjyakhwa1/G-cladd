@@ -1,0 +1,9 @@
+{% extends 'layout.html'%}
+
+{%block content%}
+{{user}}
+    <div class="media">
+        <img class="rounded-circle" src="{{user.profile.profile_picture.url}}" />
+    </div>
+    <h3><a style="color: red;" href="media/User Manual.pdf">View User manual </a></h3>
+{%endblock%}

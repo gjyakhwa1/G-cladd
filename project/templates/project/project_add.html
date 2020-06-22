@@ -1,0 +1,188 @@
+{% extends 'add_layout.html'%}
+
+{% block title%}
+<title>Add Project</title>
+{% endblock%}
+
+{%block card-title%} Add Project{%endblock%}
+
+
+{% block card-body%}
+    <form method="post">
+            {% csrf_token %}
+            {{form.projectRecordedBy}}
+            <div class="row my-row">
+                <div class="col my-col col-lg-12">
+                    <h3> {{title}}</h3>
+                </div>
+            </div>
+            <div class="row my-row">
+                <div class="col my-col col-lg-12">
+                    <div class="input-group">
+                        <div style="width:40px" class="input-group-prepend input-group-text">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="floating-placeholder">
+                            {{form.company}}
+                            <label></label>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row my-row">
+
+                <div class="col my-col col-lg-12">
+
+                    <div class="input-group">
+                        <div style="width:40px" class="input-group-prepend input-group-text">
+                            <i class="fas fa-heading"></i>
+                        </div>
+                        <div class="floating-placeholder">
+                            {{form.projectTitle}}
+                            <label></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-row">
+                <div class="col my-col col-12 col-sm-12 col-lg-6">
+                    <div class="input-group">
+                        <div style="width:40px" class="input-group-prepend input-group-text">
+                            <i class="fas fa-id-card"></i>
+                        </div>
+                        <div class="floating-placeholder">
+                            {{form.projectId}}
+                            <label></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col my-col col-12 col-sm-12 col-lg-5">
+                    <div class="input-group">
+                        <div style="width:40px" class="input-group-prepend input-group-text">
+                            <i class="fas fa-address-book"></i>
+                        </div>
+                        <div class="floating-placeholder">
+                            {{form.projectContractNo}}
+                            <label></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-row">
+                <div class="col my-col col-lg-12">
+                    <div class="input-group">
+                        <div style="width:40px" class="input-group-prepend input-group-text">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="floating-placeholder">
+                            {{form.projectSiteLocation}}
+                            <label></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-row">
+                <div class="col my-col col-lg-12">
+                    <div class="input-group">
+                        <div style="width:40px" class="input-group-prepend input-group-text">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="floating-placeholder">
+                            {{form.projectMailLocation}}
+                            <label></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-row">
+                <div class="col my-col col-12 col-sm-12 col-lg-6">
+                    <div class="input-group">
+                        <div style="width:40px" class="input-group-prepend input-group-text">
+                            <i class="fas fa-list-ol"></i>
+                        </div>
+                        <div class="floating-placeholder">
+                            {{form.orderNumber}}
+                            <label></label>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col my-col col-12 col-sm-12 col-lg-5">
+                    <div class="input-group">
+                        <div style="width:40px" class="input-group-prepend input-group-text">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div class="floating-placeholder">
+                            {{form.projectStatus}}
+                            <label></label>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row my-row">
+                <div class="col my-col col-lg-12">
+                    <div class="input-group">
+                        <div style="width:40px" class="input-group-prepend input-group-text">
+                            <i class="fas fa-registered"></i>
+                        </div>
+                        <div class="floating-placeholder">
+                            {{form.remarks}}
+                            <label></label>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row my-row">
+                <div class="col my-col col-lg-12">
+                    <div class="input-group">
+                        <div style="width:40px" class="input-group-prepend input-group-text">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="floating-placeholder">
+                            {{form.txTruckRates}}
+                            <label></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-success border rounded" type="submit" style="margin: 5px;">{%block action%}Add{%endblock%}</button>
+            <button class="btn btn-warning border rounded" type="reset" style="margin: 5px;">Reset</button>
+            <a href="{%url 'dashboard'%}">
+                <button class="btn btn-danger border rounded" type="button" style="margin: 5px;">Cancel</button>
+            </a>
+
+        </form>
+
+{%endblock%}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

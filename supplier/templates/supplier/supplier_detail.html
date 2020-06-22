@@ -1,0 +1,63 @@
+{% extends 'detail_layout.html'%}
+
+{% block title%}
+<title>Supplier Details</title>
+{% endblock%}
+
+    {%block left-title%}Supplier Details{%endblock%}
+    {% block left%}
+        
+                    <table>
+                        <tr>
+                            <td><b>Name:</b></td>
+                            <td>{{supplier.supplierName}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Address</b></td>
+                            <td>{{supplier.supplierAddress}}</td>
+                        </tr>
+                        <tr>
+                            <td><b> URL</b></td>
+                            <td>{{supplier.supplierUrl}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Contact Person</b></td>
+                            <td>{{supplier.supplierContactPerson}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Contact Num 1</b></td>
+                            <td>{{supplier.supplierContact1}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Contact Num 2 </b></td>
+                            <td>{{supplier.supplierContact2}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Fax </b></td>
+                            <td>{{supplier.supplierContactFax}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Email</b></td>
+                            <td>{{supplier.supplierEmail}}</td>
+                        </tr>
+                    </table>
+               
+                {%block form%}
+                <a href="{{supplier.get_update_url}}">
+                    <button class="btn btn-warning border rounded" type="button" style="margin: 5px;">Edit</button>
+                </a>
+                <a href="{{supplier.get_delete_url}}">
+                    <button class="btn btn-danger border rounded" type="button" style="margin: 5px;">Delete</button>
+                </a>
+                {% endblock%}
+                
+
+    {%endblock%}
+
+
+    {%block right-title%}{%endblock%}
+    {%block right%}
+
+    {%endblock%}
+
+

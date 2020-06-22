@@ -1,0 +1,13 @@
+{%extends 'order/quotation_confirm.html'%}
+{%block form%}
+    <form method="POST">
+        {% csrf_token %}
+        <table>
+            {{form.as_table}}
+        </table>
+        <br />
+        <input type="submit" name="submit" class="btn btn-success" value="Confirm" />
+        <a href="{% url 'cart_view' cart_type %}"><input type="button" class="btn btn-primary" value="Cart" /></a>
+        <a href="{% url 'dashboard' %}"><input type="button" class="btn btn-danger" value="Cancel" /></a>
+    </form>
+{%endblock%}

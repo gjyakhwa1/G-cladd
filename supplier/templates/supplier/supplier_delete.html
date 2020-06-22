@@ -1,0 +1,18 @@
+{% extends 'supplier/supplier_detail.html'%}
+
+{% block title%}
+<title>Project Delete</title>
+{% endblock%}
+    {%block form %}
+<form method="POST">
+    {% csrf_token %}
+    <hr />
+    <h3> Are you sure you want to delete ??</h3>
+    <br />
+    <button type="submit" class="btn btn-danger" />Confirm</button>
+    <a href="{%url 'supplier_list'%}">
+        <button class="btn btn-success " type="button">Cancel</button>
+    </a>
+</form>
+
+    {%endblock%}

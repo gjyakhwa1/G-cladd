@@ -1,0 +1,60 @@
+{%extends 'list_layout.html'%}
+{%load crispy_forms_tags%}
+
+{% block title %}
+<title>Order List</title>
+{% endblock %}
+
+
+
+	{% block left-title %}FILTER{% endblock%}
+	{% block left%}
+        <form method="GET">
+                    {{filter.form|crispy}}
+                    <button class='btn btn-primary' type="submit">search</button>
+        </form>
+	{%endblock %}
+
+	{%block right-title%}Order List{%endblock%}
+	{%block right%}
+        
+        {% if filter.qs%}
+                <table class="table table-hover" style="text-align:center">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>User</th>
+                            <th>Company</th>
+                            <th>Total Price</th>
+                            <th>Status</th>
+                            <th>Type</th>
+                            <th>Timestamp</th>
+
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in filter.qs%}
+                        <tr>
+                            <td>{{order.id}}</td>
+                            <td>{{order.user.username}}</td>
+                            <td>{{order.user.profile.company.name}}</td>
+                            <td>${{order.total_price}}</td>
+                            <td>{{order.status}}</td>
+                            <td>{{order.type}}</td>
+                            <td>{{order.timestamp}}</td>
+                            <td><a href="{{order.get_absolute_url}}"><button class="btn btn-primary">View</button></a></td>
+                        </tr>
+                    </tbody>
+                    {% endfor%}
+                </table>
+                {% else %}
+                <H2>No order found </H2>
+                {% endif %}
+
+	{%endblock %}
+
+
+
+
+

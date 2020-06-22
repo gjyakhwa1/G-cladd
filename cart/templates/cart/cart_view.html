@@ -1,0 +1,110 @@
+{% extends 'layout.html'%}
+
+{% block title %}
+<title>Make Order</title>
+{% endblock %}
+
+{% block content%}
+{%ifequal user.profile.account_type 'CA'%}
+<a href="{% url 'cart_view' 'Sale'%}">
+    <button class="btn {% ifequal mode 'Sale'%}btn-success{%else%} btn-primary {%endifequal%}">Sale</button>
+</a>
+<a href="{% url 'cart_view' 'Rent'%}">
+    <button class="btn {% ifequal mode 'Rent'%}btn-success{%else%} btn-primary {%endifequal%}">Rent</button>
+</a>
+{%endifequal%}
+
+{%ifequal user.profile.company.type 'self'%}
+<a href="{% url 'cart_view' 'Purchase'%}">
+    <button class="btn {% ifequal mode 'Purchase'%}btn-success{%else%} btn-primary {%endifequal%}">Purchase</button>
+</a>
+{%endifequal%}
+<div class="row">
+    <div class=" col col-12 col-lg-5">
+        <div class="card" style="margin:10px;width:100%;padding-top:15px;">
+            <h3 class="card-title" style="text-align:center;">Product List</h3>
+            <div class="card-body">
+                {{message}}
+                <table class="table table-hover" style="text-align:center">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Name</th>
+                            <th>Item Code</th>
+                            <th>SellingPrice</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for product in product_list%}
+                        <tr>
+                            <td><a style="color:#7386D5;" href="{{product.get_absolute_url}}">{{product}}</a></td>
+                            <td>{{product.productItemCode}}</td>
+                            <td>{{product.price}}</td>
+                            <td>{%if not error%}<a href="?action=add&id={{product.id}}"><i class="fas fa-plus"></i></a>{%endif%}</td>
+                        </tr>
+                    </tbody>
+
+                    {% endfor%}
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class=" col col-12 col-lg-7">
+        <div class="card" style="margin:10px;width:95%;padding-top:15px;">
+            <h3 class="card-title" style="text-align:center;">{{mode}} Cart</h3>
+            <div class="card-body">
+                {% if not error %}
+                {% if not cart %}
+                <H2>Your cart is empty </H2>
+                {% else %}
+                <form method="POST">
+                    {%csrf_token%}
+                    <table class="table table-hover" style="text-align:center">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th></th>
+                                <th>Item Code</th>
+                                <th> Name</th>
+                                <th> Rate($)</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in cart %}
+                            {% with product=item.product %}
+                            <tr>
+                                <td><a href="?action=remove&id={{product.id}}"><i class="fas fa-trash"></i></a></td>
+                                <td>{{product.productItemCode}}</td>
+                                <td>{{product.productName}}</td>
+                                <td>{{item.price}}</td>
+                                <td><input class="form-control" style="width:80px;" type="number" min="1" value="{{item.quantity}}" name="{{product.id}}"</td>
+                                <td>{{item.total_price}}</td>
+                            </tr>
+
+                            {% endwith %}
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
+                    <hr />
+                    <h4>Grand Total =   ${{cart.get_total}}</h4>
+                    <br />
+                    <button class="btn btn-warning border rounded" type="submit" name="submit" value="update" style="margin: 5px;">Update</button>
+                    <button class="btn btn-success border rounded" type="submit" name="submit" value="checkout" style="margin: 5px;">Checkout</button>
+                    <a href="?action=clear">
+                        <button class="btn btn-danger border rounded" type="button" style="margin: 5px;">Clear</button>
+                    </a>
+                </form>
+                {% endif %}
+                {% else %}
+                <h2>{{error}}</h2>
+                {% endif%}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,135 @@
+
+    <ul class="list-unstyled components">
+        <! Home !>
+        <li>
+            <a href="{% url 'dashboard'%}">
+                <i class="fas fa-home fa-2x"></i>
+                <span class="CTAs"> &ensp;Home</span>
+            </a>
+        </li>
+
+        <! Product !>
+        <li>
+            <a href="#productSubmenu" data-toggle="collapse" aria-expanded="false">
+                <i class="fas fa-user-plus fa-2x"></i>
+                <span class="CTAs">
+                    &nbsp;Product
+                    <i class="fas fa-caret-down"></i>
+                </span>
+            </a>
+            <ul class=" collapse list-unstyled" id="productSubmenu">
+                <li>
+                    <a href="{% url 'product_add'%}">Add</a>
+                </li>
+                <li>
+                    <a href="{% url 'product_list'%}">View All</a>
+                </li>
+            </ul>
+        </li>
+
+        <! Supplier !>
+        <li>
+            <a href="#supplierSubmenu" data-toggle="collapse" aria-expanded="false">
+                <i class="fas fa-user-plus fa-2x"></i>
+                <span class="CTAs">
+                    &nbsp;Supplier
+                    <i class="fas fa-caret-down"></i>
+                </span>
+            </a>
+            <ul class=" collapse list-unstyled" id="supplierSubmenu">
+                <li>
+                    <a href="{% url 'supplier_add'  %}">Add</a>
+                </li>
+                <li>
+                    <a href="{% url 'supplier_list'  %}">View All</a>
+                </li>
+            </ul>
+        </li>
+
+        <! Company !>
+        <li>
+            <a href="#companySubmenu" data-toggle="collapse" aria-expanded="false">
+                <i class="fas fa-user-plus fa-2x"></i>
+                <span class="CTAs">
+                    &nbsp;Company
+                    <i class="fas fa-caret-down"></i>
+                </span>
+            </a>
+            <ul class=" collapse list-unstyled" id="companySubmenu">
+                <li>
+                    <a href="{% url 'company_add'  %}">Add</a>
+                </li>
+                <li>
+                    <a href="{% url 'company_list' %}">View All</a>
+                </li>
+            </ul>
+        </li>
+
+        <! Project !>
+        <li>
+            <a href="#projectSubmenu" data-toggle="collapse" aria-expanded="false">
+                <i class="fas fa-user-plus fa-2x"></i>
+                <span class="CTAs">
+                    &nbsp;Project
+                    <i class="fas fa-caret-down"></i>
+                </span>
+            </a>
+            <ul class=" collapse list-unstyled" id="projectSubmenu">
+                <li>
+                    <a href="{% url 'project_add'%}">Add</a>
+                </li>
+                <li>
+                    <a href="{% url 'project_list' %}">View All</a>
+                </li>
+            </ul>
+        </li>
+
+        <! User !>
+        <li>
+            <a href="#userSubmenu" data-toggle="collapse" aria-expanded="false">
+                <i class="fas fa-user-plus fa-2x"></i>
+                <span class="CTAs">
+                    &nbsp;Users
+                    <i class="fas fa-caret-down"></i>
+                </span>
+            </a>
+            <ul class=" collapse list-unstyled" id="userSubmenu">
+                <li>
+                    <a href="{% url 'register'%}">Add</a>
+                </li>
+                <li>
+                    <a href="{% url 'update' %}">Update</a>
+                </li>
+                <li>
+                    <a href="{% url 'user_list' %}">View All</a>
+                </li>
+            </ul>
+        </li>
+
+        <! Order !>
+        <li>
+            <a href="#orderSubmenu" data-toggle="collapse" aria-expanded="false">
+                <i class="fas fa-list fa-2x"></i>
+                <span class="CTAs">
+                    &emsp;Order<i class="fas fa-caret-down"></i>
+                </span>
+            </a>
+            <ul class=" collapse list-unstyled" id="orderSubmenu">
+                <li>
+                    <a href="{% url 'cart_view' cart_type %}">Add</a>
+                </li>
+                <li>
+                    <a href="{% url 'order_list' %}">View All</a>
+                </li>
+                <
+            </ul>
+        </li>
+
+        <! Logout !>
+        <li>
+            <a href="{% url 'logout'%}">
+                <i class="fas fa-power-off fa-2x"></i>
+                <span class="CTAs"> &ensp;Log Out</span>
+            </a>
+        </li>
+    </ul>

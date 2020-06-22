@@ -1,0 +1,167 @@
+{%extends 'order/order_layout.html'%}
+{%block title%}<title> View Order</title>{%endblock%}
+{% block left-title %} Order Details {%endblock%}
+{% block left %}
+<table>
+    <tr>
+        <td>Project</td>
+        <td><a href="{{order.project.get_absolute_url}}" style="color: blue;">{{order.project}} </a></td>
+    </tr>
+    <tr>
+        <td>Order ID</td>
+        <td>{{order.id}}</td>
+    </tr>
+    <tr>
+        <td>Order Type</td>
+        <td>{{order.type}}</td>
+    </tr>
+    <tr>
+        <td>Ordered By :</td>
+        <td>{{order.user.username}}</td>
+    </tr>
+    <tr>
+        <td>Total Price</td>
+        <td>${{order.total_price}}</td>
+    </tr>
+    <tr>
+        <td>Discount Rate</td>
+        <td>{{order.discount_rate}} %</td>
+    </tr>
+    <tr>
+        <td>Discount Amount </td>
+        <td> ${{order.discount_amount}}</td>
+    </tr>
+    <tr>
+        <td>Total Payment Amount</td>
+        <td>${{order.payment_total}}</td>
+    </tr>
+    <tr>
+        <td>Advance Payment Amount</td>
+        <td>${{order.payment_advance}}</td>
+    </tr>
+    <tr>
+        <td>Total Paid Amount </td>
+        <td> ${{order.payment_received}}</td>
+    </tr>
+    <tr>
+        <td>Due Payment Amount </td>
+        <td> ${{order.payment_due}}</td>
+    </tr>
+    {% ifequal order.type 'Rent' %}
+    <tr>
+        <td>Expected Rental Duration  </td>
+        <td>{{order.rentaldetails.expected_duration}} day/s</td>
+    </tr>
+    {%endifequal%}
+
+    <tr>
+        <td>Status</td>
+        <td>{{order.status}}</td>
+    </tr>
+
+
+</table>
+<hr />
+<br />
+{%block form%}
+{%if links.b%}
+dine
+{%endif%}
+
+    {%for key,value in links.items%}
+    <a href="{{value}}">
+        <button class="btn btn-primary">{{key}}</button>
+    </a>
+    <br />
+<br />
+    {%endfor%}
+
+
+
+
+
+
+
+{%endblock%}
+<hr />
+<br />
+    {% if order.dncnregister_set %}
+        {% for dncnregister in order.dncnregister_set.all %}
+<table class="table table-hover">
+    <thead class="thead-dark">
+    <th colspan="2">
+        <center>
+            {% ifequal dncnregister.type 'DN'%}
+            Delivery Note
+            {%else%}
+            Collection Note
+            {%endifequal%}
+        </center>
+    </th>
+    </thead>
+
+    <tr>
+        <td>Truck Type</td>
+        <td>{{dncnregister.truck_type}}</td>
+    </tr>
+    <tr>
+        <td>Truck Plate Number</td>
+        <td>{{dncnregister.truck_plate_num}}</td>
+    </tr>
+    <tr>
+        <td>Recorded By </td>
+        <td>{{dncnregister.recorded_by.username}}</td>
+    </tr>
+    <tr>
+        <td>Recorded ON</td>
+        <td>{{dncnregister.timestamp}}</td>
+    </tr>
+</table>
+        {%endfor%}
+
+    {%endif%}
+
+
+{% endblock %}
+
+{%block right-title%}
+ {{order.type }} Cart
+{%endblock%}
+{%block right%}
+<table class="table table-hover" style="text-align:center">
+    <thead class="thead-dark">
+        <tr>
+            <th>Item Code</th>
+            <th> Name</th>
+            <th> Rate($)</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in order.orderitemsregister_set.all %}
+        <tr>
+            <td>{{item.product.productItemCode}}</td>
+            <td>{{item.product.productName}}</td>
+            <td>{{item.product_price}}</td>
+            <td>{{item.quantity}}</td>
+            <td>{{item.sub_total}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<hr />
+{% ifequal order.type 'Rent' %}
+
+<h5>Expected Rental Duration :{{order.rentaldetails.expected_duration}} day/s</h5>
+
+    {%endifequal%}
+<h5>Total Amount : ${{order.total_price}} </h5>
+<h5>Discount Amount : ${{order.discount_amount}}</h5>
+
+<h4>Grand Total =   ${{order.payment_total}}</h4>
+<h5>Advance Payment : ${{order.payment_advance}}</h5>
+<br />
+
+
+{%endblock%}

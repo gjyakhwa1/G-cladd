@@ -1,0 +1,55 @@
+{%extends 'list_layout.html'%}
+{%load crispy_forms_tags%}
+{% block title %}
+	<title>Product List</title>
+{% endblock %}
+
+
+
+	{% block left-title %} FILTER{% endblock%}
+	{% block left%}
+    <form method="GET">
+        {{filter.form|crispy}}
+        <button class='btn btn-primary' type="submit">search</button>
+    </form>
+
+	{%endblock %}
+
+
+	{%block right-title%}Product List{%endblock%}
+
+	{%block right%}
+        {% if filter.qs%}
+                <table class="table table-hover" style="text-align:center">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Name</th>
+                            <th>Item Code</th>
+                            <th>SellingPrice</th>
+                            <th>RentalPrice</th>
+                            <th>Stock</th>
+                            <th colspan="3">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for product in filter.qs%}
+                        <tr>
+                            <td>{{product}}</td>
+                            <td>{{product.productItemCode}}</td>
+                            <td>{{product.productBrandNewSellingRate}}</td>
+                            <td>{{product.productDailyRentalRate}}</td>
+                            <td>{{product.stock}}</td>
+                            <td><a href="{{product.get_absolute_url}}"><button class="btn btn-primary">View</button></a></td>
+                            <td><a href="{{product.get_update_url}}"><button class="btn btn-warning">Edit</button></a></td>
+                            <td><a href="{{product.get_delete_url}}"><button class="btn btn-danger">Delete</button></a></td>
+                        </tr>
+                    </tbody>
+
+                    {% endfor%}
+                </table>
+                {% else %}
+                <H2>No product found </H2>
+                {% endif %}
+
+	{%endblock %}
+

@@ -1,0 +1,19 @@
+{% extends 'order/order_view.html' %}
+{% block form%}
+<h3>Confirm Payment</h3>
+<form method="POST">
+    {% csrf_token %}
+    Amount Paid Till Now = $ {{order.payment_received}}<br />
+    <hr />
+    Enter the additional Amount Received 
+    <table>
+        
+        {{form.as_table}}
+    </table>
+    <input type="submit" class="btn btn-primary"></input>
+</form>
+
+
+
+
+{% endblock%}

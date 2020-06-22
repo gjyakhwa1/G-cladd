@@ -1,0 +1,149 @@
+{% extends 'detail_layout.html'%}
+
+{% block title%}
+    <title>Project Detail</title>
+{% endblock%}
+
+    {%block left-title%}Project Detail{%endblock%}
+    {% block left%}
+    <p class="card-text">
+                    <table style="border-style:solid; border-width:2px;" align="center">
+                        <tr>
+                            <td><b>Company :</b></td>
+                            
+                            <td><a href="{{project.company.get_absolute_url}}" style="color: blue;">{{project.company}} </a></td>
+                           
+                        </tr>
+                        <tr>
+                            <td><b>Title:</b></td>
+                            <td>{{project.projectTitle}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>ID:</b></td>
+                            <td>{{project.projectId}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Contract Number:</b></td>
+                            <td>{{project.projectContractNo}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Site Location</b></td>
+                            <td>{{project.projectSiteLocation}}:</td>
+                        </tr>
+                        <tr>
+                            <td><b> Mail Location:</b></td>
+                            <td>{{project.projectMailLocation}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Order Number:</b></td>
+                            <td>{{project.orderNumber}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Project Status:</b></td>
+                            <td>{{project.projectStatus}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Recorded By:</b></td>
+                            <td>{{project.projectRecordedBy}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Tx Truck Rate:</b></td>
+                            <td>{{project.txTruckRates}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Total Transaction Value:</b></td>
+                            <td>${{project.payment_total}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Total Paid Amount:</b></td>
+                            <td>${{project.payment_received}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Total Payment Due:</b></td>
+                            <td>${{project.payment_due}}</td>
+                        </tr>
+
+                        <tr>
+                            <td><b>Remarks:</b></td>
+                            <td>{{project.remarks}}</td>
+                        </tr>
+                    </table>
+                </p>
+                {%block form%}
+                {% ifequal system_access 'True'%}
+                    <a href="{{project.get_update_url}}">
+                        <button class="btn btn-warning border rounded" type="button" style="margin: 5px;">Edit</button>
+                    </a>
+                    <a href="{{project.get_delete_url}}">
+                        <button class="btn btn-danger border rounded" type="button" style="margin: 5px;">Delete</button>
+                    </a>
+                {%endifequal%}
+                {%endblock%}
+              
+                
+
+
+    {%endblock%}
+
+
+    {%block right-title%}Orders{%endblock%}
+    {%block right%}
+    {% if project.orderregister_set.all %}
+<table class="table table-hover" style="text-align:center">
+    <thead class="thead-dark">
+      
+        <tr>
+            <th rowspan="2">ID</th>
+            <th rowspan="2">Type</th>
+            <th rowspan="2">Status</th>
+            
+            <th colspan="2"> Amount</th>
+        </tr>
+        <tr>
+            <th>Total</th>
+            <th>Paid</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for order in project.orderregister_set.all|slice:":10" %}
+        <tr>
+            <td><a href="{{order.get_absolute_url}}" style="color: blue;">{{order.id}}</a></td>
+            
+           
+            <td>{{order.type}}</td>
+            <td>{{order.status}}</td>
+            <td>${{order.payment_total}}</td>
+            <td>${{order.payment_received}}</td>
+            
+        </tr>
+    </tbody>
+
+    {% endfor%}
+</table>
+<hr>
+<center><a href="{% url 'project_list'%}"><button class="btn btn-primary">View All </button></a></center>
+       {% else %}
+<H2>No Order found </H2>
+        {% endif %}
+    {%endblock%}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

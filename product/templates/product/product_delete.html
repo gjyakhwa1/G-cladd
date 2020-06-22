@@ -1,0 +1,17 @@
+{% extends 'product/product_detail.html'%}
+
+{% block title%}
+<title>Product Delete</title>
+{% endblock%}
+    {%block form %}
+        <form method="POST">
+                    {% csrf_token %}
+                    <h3> Are you sure you want to delete ??</h3>
+                    <br />
+                    <button type="submit" class="btn btn-danger" />Confirm</button>
+                    <a href="{%url 'product_list'%}">
+                        <button class="btn btn-success " type="button">Cancel</button>
+                    </a>
+                </form>
+
+    {%endblock%}

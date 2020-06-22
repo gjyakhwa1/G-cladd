@@ -1,0 +1,98 @@
+{% extends 'detail_layout.html'%}
+
+{% block title%}
+<title>Product Detail</title>
+{% endblock%}
+
+    {%block left-title%}Product Detail{%endblock%}
+    {% block left%}
+                <table >
+                        <tr>
+                            <td><b> Product Name:</b></td>
+                            <td>{{product.productName}}</td>
+                        </tr>
+                        <tr>
+                            <td><b> Product Material Item Code:</b></td>
+                            <td>{{product.productMaterialItemCode}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Product Brand-New Selling Rate:</b></td>
+                            <td>{{product.productBrandNewSellingRate}}</td>
+                        </tr>
+                        <tr>
+                            <td><b> Product Loss Rate</b></td>
+                            <td>{{product.productLossRate}}:</td>
+                        </tr>
+                        <tr>
+                            <td><b> Product Repair Rate:</b></td>
+                            <td>{{product.productRepairRate}}</td>
+                        </tr>
+                        <tr>
+                            <td><b> Product Daily  Rental Rate:</b></td>
+                            <td>{{product.productDailyRentalRate}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Product Weekly Rentel Rate:</b></td>
+                            <td>{{product.productWeeklyRentalRate}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Product Monthly Rentel Rate:</b></td>
+                            <td>{{product.productMonthlyRentalRate}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Product Daily Hire Charge:</b></td>
+                            <td>{{product.productDailyHireCharge}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Product Weekly Hire Charge:</b></td>
+                            <td>{{product.productWeeklyHireCharge}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Product Monthly Hire Charge:</b></td>
+                            <td>{{product.productMonthlyHireCharge}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Stock:</b></td>
+                            <td>{{product.stock}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Product Recorded BY:</b></td>
+                            <td>{{product.productRecordedBy}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Supplier Name:</b></td>
+                            <td>{{product.supplierName}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Remarks:</b></td>
+                            <td>{{product.remarks}}</td>
+                        </tr>
+                </table>
+                <hr />
+                    {%block form%}
+                        {% ifequal system_access 'True'%}
+                        <a href="{{product.get_update_url}}">
+                            <button class="btn btn-warning border rounded" type="button" style="margin: 5px;">Edit</button>
+                        </a>
+                        <a href="{{product.get_delete_url}}">
+                            <button class="btn btn-danger border rounded" type="button" style="margin: 5px;">Delete</button>
+                        </a>
+                        {%endifequal%}
+                    {%endblock%}
+                
+
+
+                
+    {%endblock%}
+
+
+    {%block right-title%}Product Image{%endblock%}
+    {%block right%}
+            <img src="{{product.image.url}}" />
+            <img class="card-img-top w-100 d-block">
+
+    {%endblock%}
+
+
+
+

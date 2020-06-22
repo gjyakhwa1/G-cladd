@@ -1,0 +1,36 @@
+{% extends 'layout.html'%}
+
+{% block title %}
+<title>Confirm Order</title>
+{% endblock %}
+
+{% block content%}
+<div class="row">
+    <div class=" col col-12 col-lg-5">
+        <div class="card" style="margin:10px;width:100%;padding-top:15px;">
+            <h3 class="card-title" style="text-align:center;">{%block left-title%}{%endblock%}</h3>
+            <div class="card-body">
+                {% block left%}
+                {%endblock%}
+            </div>
+        </div>
+    </div>
+    <div class=" col col-12 col-lg-7">
+        <div class="card" style="margin:10px;width:95%;padding-top:15px;">
+            <h3 class="card-title" style="text-align:center;">{%block right-title%}{%endblock%}</h3>
+            <div class="card-body">
+                {%block right%}
+                {%endblock%}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+        {% endblock %}

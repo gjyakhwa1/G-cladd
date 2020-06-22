@@ -1,0 +1,232 @@
+{%extends 'add_layout.html' %}
+
+{% block title %}
+<title>Add Product</title>
+{% endblock %}
+
+{% block card-title%}
+Add Product
+{%endblock%}
+{% block card-body %}
+
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row my-row">
+                
+            </div>
+            <div class="row my-row">
+                <div class="col my-col  col-lg-12">
+                    <div class="input-group">
+                        <div style="width:40px" class="input-group-prepend input-group-text">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="floating-placeholder">
+                            {{form.productName}}
+                            <label></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-row">
+                <div class="col my-col  col-lg-12">
+                    <div class="input-group">
+                        <div style="width:40px" class="input-group-prepend input-group-text">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="floating-placeholder">
+                            {{form.productItemCode}}
+                            <label></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-row">
+                <div class="col my-col col-sm-12 col-12 col-lg-6">
+                    <div class="input-group">
+                        <div style="width:40px" class="input-group-prepend input-group-text">
+                            <i class="fas fa-unlock"></i>
+                        </div>
+                        <div class="floating-placeholder">
+                            {{form.productBrandNewSellingRate}}
+                            <label></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col my-col col-12 col-sm-12 col-lg-5">
+                    <div class="input-group">
+                        <div style="width:40px" class="input-group-prepend input-group-text">
+                            <i class="fas fa-unlock"></i>
+                        </div>
+                        <div class="floating-placeholder">
+                            {{form.productSecondHandSellingRate}}
+                            <label></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-row">
+                <div class="col my-col col-12 col-sm-12 col-lg-6">
+                    <div class="input-group">
+                        <div style="width:40px" class="input-group-prepend input-group-text">
+                            <i class="fas fa-unlock"></i>
+                        </div>
+                        <div class="floating-placeholder">
+                            {{form.productLossRate}}
+                            <label></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col my-col col-12 col-sm-12 col-lg-5">
+                    <div class="input-group">
+                        <div style="width:40px" class="input-group-prepend input-group-text">
+                            <i class="fas fa-unlock"></i>
+                        </div>
+                        <div class="floating-placeholder">
+                            {{form.productRepairRate}}
+                            <label></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row my-row">
+                <div class="col my-col  col-lg-12">
+
+                    <div class="input-group">
+                        <div style="width:40px" class="input-group-prepend input-group-text">
+                            <i class="fas fa-registered"></i>
+                        </div>
+                        <div class="floating-placeholder">
+                            {{form.productCleaningRate}}
+                            <label></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-row">
+                <div class="col col my-col col-12 col-sm-12 col-lg-6">
+                    <div class="input-group">
+                        <div style="width:40px" class="input-group-prepend input-group-text">
+                            <i class="fas fa-unlock"></i>
+                        </div>
+                        <div class="floating-placeholder">
+                            {{form.productDailyRentalRate}}
+                            <label></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col my-col col-12 col-sm-12 col-lg-5">
+                    <div class="input-group">
+                        <div style="width:40px" class="input-group-prepend input-group-text">
+                            <i class="fas fa-unlock"></i>
+                        </div>
+                        <div class="floating-placeholder">
+                            {{form.productWeeklyRentalRate}}
+                            <label></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-row">
+                <div class="col my-col  col-lg-12">
+                    <div class="input-group">
+                        <div style="width:40px" class="input-group-prepend input-group-text">
+                            <i class="fas fa-registered"></i>
+                        </div>
+                        <div class="floating-placeholder">
+                            {{form.productMonthlyRentalRate}}
+                            <label></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-row">
+                <div class="col my-col col-12 col-sm-12 col-lg-6">
+                    <div class="input-group">
+                        <div style="width:40px" class="input-group-prepend input-group-text">
+                            <i class="fas fa-unlock"></i>
+                        </div>
+                        <div class="floating-placeholder">
+                            {{form.productDailyHireCharge}}
+                            <label></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col my-col col-12 col-sm-12 col-lg-5">
+                    <div class="input-group">
+                        <div style="width:40px" class="input-group-prepend input-group-text">
+                            <i class="fas fa-unlock"></i>
+                        </div>
+                        <div class="floating-placeholder">
+                            {{form.productWeeklyHireCharge}}
+                            <label></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-row">
+                <div class="col my-col  col-lg-12">
+                    <div class="input-group">
+                        <div style="width:40px" class="input-group-prepend input-group-text">
+                            <i class="fas fa-registered"></i>
+                        </div>
+                        <div class="floating-placeholder">
+                            {{form.productMonthlyHireCharge}}
+                            <label></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-row">
+                <div class="col my-col  col-lg-12">
+                    <div class="input-group">
+                        <div style="width:40px" class="input-group-prepend input-group-text">
+                            <i class="fas fa-registered"></i>
+                        </div>
+                        <div class="floating-placeholder">
+                            {{form.stock}}
+                            <label></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            {{form.productRecordedBy}}
+            <div class="row my-row">
+                <div class="col my-col  col-lg-12">
+                    <div class="input-group">
+                        <div style="width:40px" class="input-group-prepend input-group-text">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="floating-placeholder">
+                            {{form.remarks}}
+                            <label></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-row">
+                <div class="col my-col  col-lg-12">
+                    <div class="input-group">
+                        <div style="width:40px" class="input-group-prepend input-group-text">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="floating-placeholder">
+                            {{form.image}}
+                            <label></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <button class="btn btn-success border rounded" type="submit" style="margin: 5px;">{%block action%}Add{%endblock%}</button>
+            <button class="btn btn-warning border rounded" type="reset" style="margin: 5px;">Reset</button>
+            <a href="{%url 'dashboard'%}">
+                <button class="btn btn-danger border rounded" type="button" style="margin: 5px;">Cancel</button>
+            </a>
+
+        </form>
+        
+  
+{% endblock %}

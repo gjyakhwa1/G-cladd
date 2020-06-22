@@ -1,0 +1,12 @@
+{% extends 'order/order_view.html' %}
+{% block form%}
+<h3>Confirm Order</h3>
+<form method="POST">
+    {% csrf_token %}
+    {{form}}
+    <br />
+    Are you sure you want to make the order ?
+    <input type="submit" name="submit" value="confirm" class="btn btn-primary"></input>
+</form>
+
+{% endblock%}

@@ -1,0 +1,55 @@
+{% extends 'add_layout.html'%}
+
+{% block title%}
+<title>Inventory</title>
+{% endblock%}
+
+{%block card-title%}Inventory{%endblock%}
+
+
+{% block card-body%}
+
+
+{% if total_items%}
+<table class="table table-hover" style="text-align:center">
+    <thead class="thead-dark">
+        <tr>
+            <th>Name</th>
+            <th>Item Code</th>
+            <th>SellingPrice</th>
+            <th>Rental Price <br>per day</th>
+            <th>Stock</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in inventory_self %}
+        <tr>
+            <td>{{product}}</td>
+            <td>{{product.productItemCode}}</td>
+            <td>{{product.productBrandNewSellingRate}}</td>
+            <td>{{product.productDailyRentalRate}}</td>
+            <td>{{product.stock}} pcs</td>
+
+        </tr>
+        {% endfor%}
+        {%for key,value in inventory_client.items%}
+
+        <tr>
+            <td>{{value.product}}</td>
+            <td>{{value.product.productItemCode}}</td>
+            <td>{{value.product.productBrandNewSellingRate}}</td>
+            <td>{{value.product.productDailyRentalRate}}</td>
+            <td>{{value.quantity}} pcs</td>
+
+        </tr>
+        {%endfor%}
+
+    </tbody>
+</table>
+Total Items = {{total_items}} pcs
+                {% else %}
+<H2>No product found </H2>
+                {% endif %}
+
+{%endblock%}

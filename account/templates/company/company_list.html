@@ -1,0 +1,55 @@
+{%extends 'list_layout.html'%}
+{%load crispy_forms_tags%}
+{% block title %}
+<title>Company List</title>
+{% endblock %}
+
+
+
+{% block left-title %}FILTER{% endblock%}
+{% block left%}
+<form method="GET" style="width:inherit;">
+    {{filter.form|crispy}}
+    <button class='btn btn-primary' type="submit">search</button>
+</form>
+{%endblock %}
+
+	{%block right-title%}Companies{%endblock%}
+	{%block right%}
+    {% if filter.qs%}
+        <table class="table table-hover" style="text-align:center">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Title</th>
+                    <th>Country</th>
+                    <th>Type</th>
+                    <th>City</th>
+                    
+                    <th colspan="3">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for company in filter.qs%}
+                <tr>
+                    <td>{{company.name}}</td>
+                    <td>{{company.country}}</td>
+                    <td>{{company.type}}</td>
+                    <td>{{company.city}}</td>
+                    
+                    <td><a href="{{company.get_absolute_url}}"><button class="btn btn-primary">View</button></a></td>
+                    <td><a href="{{company.get_update_url}}"><button class="btn btn-warning">Edit</button></a></td>
+                    <td><a href="{{company.get_delete_url}}"><button class="btn btn-danger">Delete</button></a></td>
+                </tr>
+            </tbody>
+
+            {% endfor%}
+        </table>
+    {% else %}
+        <H2>No product found </H2>
+    {% endif %}
+
+    {%endblock %}
+
+	
+
+

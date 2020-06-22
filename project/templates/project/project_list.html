@@ -1,0 +1,51 @@
+{%extends 'list_layout.html'%}
+{%load crispy_forms_tags%}
+
+{% block title %}
+<title>Project List</title>
+{% endblock %}
+
+{% block left-title %}FILTER{% endblock%}
+{% block left%}
+<form method="GET" style="width:inherit;">
+    {{filter.form|crispy}}
+    <button class='btn btn-primary' type="submit">search</button>
+</form>
+{%endblock %}
+
+{%block right-title%}Project List{%endblock%}
+{%block right%}
+        {% if filter.qs%}
+<table class="table table-hover" style="text-align:center">
+    <thead class="thead-dark">
+        <tr>
+            <th>Title</th>
+            <th>ID</th>
+            <th>Company</th>
+            <th>Location</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for project in filter.qs%}
+        <tr>
+            <td>{{project}}</td>
+            <td>{{project.projectId}}</td>
+            <td>{{project.company.name}}</td>
+            <td>{{project.projectSiteLocation}}</td>
+            <td>{{project.projectStatus}}</td>
+            <td><a href="{{project.get_absolute_url}}"><button class="btn btn-primary">View</button></a></td>
+            
+        </tr>
+    </tbody>
+
+    {% endfor%}
+</table>
+       {% else %}
+<H2>No product found </H2>
+        {% endif %}
+
+    {%endblock %}
+
+

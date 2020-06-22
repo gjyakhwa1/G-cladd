@@ -1,0 +1,52 @@
+
+<ul class="list-unstyled components">
+    <! Home !>
+    <li>
+        <a href="{% url 'dashboard'%}">
+            <i class="fas fa-home fa-2x"></i>
+            <span class="CTAs"> &ensp;Home</span>
+        </a>
+    </li>
+
+   
+
+    <! Project !>
+    <li>
+        <a href="#projectSubmenu" data-toggle="collapse" aria-expanded="false">
+            <i class="fas fa-user-plus fa-2x"></i>
+            <span class="CTAs">
+                &nbsp;Project
+                <i class="fas fa-caret-down"></i>
+            </span>
+        </a>
+        <ul class=" collapse list-unstyled" id="projectSubmenu">
+            <li>
+                <a href="{% url 'project_list' %}">View All</a>
+            </li>
+        </ul>
+    </li>
+
+    <! Order !>
+    <li>
+        <a href="#orderSubmenu" data-toggle="collapse" aria-expanded="false">
+            <i class="fas fa-list fa-2x"></i>
+            <span class="CTAs">
+                &emsp;Order<i class="fas fa-caret-down"></i>
+            </span>
+        </a>
+        <ul class=" collapse list-unstyled" id="orderSubmenu">
+            <li>
+                <a href="{% url 'order_list' %}">View All</a>
+            </li>
+            <
+        </ul>
+    </li>
+
+    <! Logout !>
+    <li>
+        <a href="{% url 'logout'%}">
+            <i class="fas fa-power-off fa-2x"></i>
+            <span class="CTAs"> &ensp;Log Out</span>
+        </a>
+    </li>
+</ul>

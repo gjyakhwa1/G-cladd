@@ -1,0 +1,56 @@
+{%extends 'list_layout.html'%}
+{%load crispy_forms_tags%}
+{% block title %}
+<title>Supplier List</title>
+{% endblock %}
+
+
+
+	{% block left-title %}FILTER{% endblock%}
+	{% block left%}
+         <form method="GET">
+                    {{filter.form|crispy}}
+                    <button class='btn btn-primary' type="submit">search</button>
+                </form>
+	{%endblock %}
+
+	{%block right-title%}Supplier List{%endblock%}
+	{%block right%}
+        {% if filter.qs%}
+                <table class="table table-hover" style="text-align:center">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>Contact Person</th>
+                            <th colspan="3">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for supplier in filter.qs %}
+                        <tr>
+                            <td>{{supplier.supplierName}}</td>
+                            <td>{{supplier.supplierAddress}}</td>
+                            <td>{{supplier.supplierContactPerson}}</td>
+                            <td><a href="{{supplier.get_absolute_url}}"><button class="btn btn-primary">view</button></a></td>
+                            <td><a href="{{supplier.get_update_url}}"><button class="btn btn-warning">Edit</button></a></td>
+                            <td><a href="{{supplier.get_delete_url}}"><button class="btn btn-danger">Delete</button></a></td>
+                        </tr>
+                    </tbody>
+
+                    {% endfor%}
+                </table>
+                {% else %}
+                <H2>No supplier found </H2>
+                {% endif %}
+
+	{%endblock %}
+
+
+
+
+
+
+
+
+

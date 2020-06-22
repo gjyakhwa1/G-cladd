@@ -1,0 +1,192 @@
+{% extends 'add_layout.html'%}
+
+{% block title%}
+<title>Add User</title>
+{% endblock%}
+
+{%block card-title%}Add User{%endblock%}
+
+
+{% block card-body%}
+
+<div class="container my-container text-center">
+    <form method="POST" name="register" enctype="multipart/form-data">
+        {%csrf_token%}
+        
+        <div class="row my-row">
+            <div class="col my-col  col-lg-12">
+                <div class="input-group">
+                    <div class="input-group-prepend input-group-text">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="floating-placeholder">
+                        {{user_form.first_name}}
+                        <label></label>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="row my-row">
+            <div class="col my-col  col-lg-12">
+                <div class="input-group">
+                    <div class="input-group-prepend input-group-text">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="floating-placeholder">
+                        {{user_form.last_name}}
+                        <label></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row my-row">
+            <div class="col my-col  col-lg-12">
+                <div class="input-group">
+                    <div class="input-group-prepend input-group-text">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="floating-placeholder">
+                        {{user_form.username}}
+                        <label></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row my-row">
+            <div class="col my-col  col-lg-12">
+                <div class="input-group">
+                    <div class="input-group-prepend input-group-text">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="floating-placeholder">
+                        {{user_form.email}}
+                        <label></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row my-row">
+            <div class="col my-col  col-lg-12">
+                <div class="input-group">
+                    <div class="input-group-prepend input-group-text">
+                        <i class="fas fa-unlock"></i>
+                    </div>
+                    <div class="floating-placeholder">
+                        {{user_form.password1}}
+                        <label></label>
+                    </div>
+                </div>
+            </div>
+            <div class="col my-col col-lg-12">
+                <div class="input-group">
+                    <div class="input-group-prepend input-group-text">
+                        <i class="fas fa-unlock"></i>
+                    </div>
+                    <div class="floating-placeholder">
+                        {{user_form.password2}}
+                        <label></label>
+                    </div>
+                </div>
+            </div>
+            <div class="col my-col  col-lg-12">
+                <div class="input-group">
+                    <div class="input-group-prepend input-group-text">
+                        <i class="fas fa-unlock"></i>
+                    </div>
+
+                    <div class="floating-placeholder">
+                        {{profile_form.contact_number}}
+                        <label></label>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col my-col  col-lg-12">
+                <div class="input-group">
+                    <div class="input-group-prepend input-group-text">
+                        <i class="fas fa-unlock"></i>
+                    </div>
+
+                    <div class="floating-placeholder">
+                        {{profile_form.company}}
+                        <label></label>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col my-col  col-lg-12">
+                <div class="input-group">
+                    <div class="input-group-prepend input-group-text">
+                        <i class="fas fa-unlock"></i>
+                    </div>
+
+                    <div class="floating-placeholder">
+                        {{profile_form.account_type}}
+                        <label></label>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col my-col  col-lg-12">
+                <div class="input-group">
+                    <div class="input-group-prepend input-group-text">
+                        <i class="fas fa-unlock"></i>
+                    </div>
+                    <div class="floating-placeholder">
+                        Profile Picture
+                        {{profile_form.profile_picture}}
+                        <label></label>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        {{profile_form.recorded_by.value}}
+        <div class="row my-row">
+            <div class="col  my-col col-lg-4 col-sm-4">
+                <button type="submit" class="btn btn-success">Sign Up</button>
+            </div>
+            <div class="col  my-col col-lg-4 col-sm-2">
+                <button type="reset" class="btn btn-primary ">Reset</button>
+            </div>
+        </div>
+
+
+
+    </form>
+    {% if user_form.errors %}
+    <div class="col-10">
+        {% for field in user_form %}
+        {% for error in field.errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+        {% endfor %}
+        {% endfor %}
+        {% for error in user_form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if profile_form.errors %}
+    <div class="col-10">
+        {% for field in profile_form %}
+        {% for error in field.errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+        {% endfor %}
+        {% endfor %}
+        {% for error in profile_form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+{%endblock%}

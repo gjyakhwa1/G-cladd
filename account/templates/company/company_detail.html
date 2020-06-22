@@ -1,0 +1,110 @@
+{% extends 'detail_layout.html'%}
+
+{% block title%}
+<title>Company Detail</title>
+{% endblock%}
+
+    {%block left-title%}Company Detail{%endblock%}
+    {% block left%}
+<table>
+    <tr>
+        <td>Company Name</td>
+        <td>{{company.name}}</td>
+    </tr>
+    <tr>
+        <td>Country</td>
+        <td>{{company.country}}</td>
+    </tr>
+
+    <tr>
+        <td>Province</td>
+        <td>{{company.province}}</td>
+    </tr>
+    <tr>
+        <td>City</td>
+        <td>{{company.city}}</td>
+    </tr>
+    <tr>
+        <td>Street</td>
+        <td>{{company.street}}</td>
+    </tr>
+
+    <tr>
+        <td>Type</td>
+        <td>{{company.type}}</td>
+    </tr>
+    <tr>
+        <td>Total Transaction Value</td>
+        <td>${{company.payment_total}}</td>
+    </tr>
+    <tr>
+        <td>Payment Received</td>
+        <td>${{company.payment_received}}</td>
+    </tr>
+    <tr>
+        <td>Due Payent</td>
+        <td>${{company.payment_due}}</td>
+    </tr>
+    <tr>
+        <td>Contact Number</td>
+        <td>{{company.contact_number}}</td>
+    </tr>
+    <tr>
+        <td>website</td>
+        <td>{{company.website}}</td>
+    </tr>
+</table>
+<hr />
+{%block form%}
+<a href="{{company.get_update_url}}"><button class="btn btn-warning">Edit</button></a>
+<a href="{{company.get_delete_url}}"><button class="btn btn-danger">Delete</button></a>
+
+{%endblock%}
+
+    {%endblock%}
+
+
+    {%block right-title%}Projects{%endblock%}
+    
+   
+    {%block right%}
+    {% if company.projectregister_set.all %}
+<table class="table table-hover" style="text-align:center">
+    <thead class="thead-dark">
+      
+        <tr>
+            <th rowspan="2">Title</th>
+            <th rowspan="2">Location</th>
+            <th rowspan="2">Status</th>
+            
+            <th colspan="2"> Amount</th>
+        </tr>
+        <tr>
+            <th>Total</th>
+            <th>Paid</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for project in company.projectregister_set.all|slice:":5" %}
+        <tr>
+            <td><a href="{{project.get_absolute_url}}" style="color: blue;">{{project}}</a></td>
+            
+           
+            <td>{{project.projectSiteLocation}}</td>
+            <td>{{project.projectStatus}}</td>
+            <td>${{project.payment_total}}</td>
+            <td>${{project.payment_received}}</td>
+            
+        </tr>
+    </tbody>
+
+    {% endfor%}
+</table>
+<hr>
+<center><a href="{% url 'project_list'%}"><button class="btn btn-primary">View All </button></a></center>
+       {% else %}
+<H2>No project found </H2>
+        {% endif %}
+    {%endblock%}
+
+

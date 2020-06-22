@@ -1,0 +1,238 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    {% block title%}
+    <title>Scaffolding</title>{% endblock%}
+    <link href='https://fonts.googleapis.com/css?family=Yantramanav' rel='stylesheet'>
+    {% load static %}
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+          integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+
+    <!-- Our Custom CSS -->
+
+    <link rel="stylesheet" type="text/css" href="{% static 'site.css' %}">
+    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Yantramanav' rel='stylesheet'>
+
+    <!-- Our Custom Java Script -->
+    <!-- Font Awesome JS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+            integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+            crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+            integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+            crossorigin="anonymous"></script>
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+            integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+            crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+            integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+            crossorigin="anonymous"></script>
+
+    
+
+     <script>
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+
+        
+
+        $(document).ready(function () {
+            $("#success-alert").hide();
+            $("#myWish").click(function showAlert() {
+                $("#success-alert").alert();
+                window.setTimeout(function () {
+                    $("#success-alert").alert('close');
+                }, 3000);
+            });
+        });
+
+        function initTricks() {
+            var labels = $('.floating-placeholder label');
+            labels.each(function (i) {
+                var ph = $(labels[i])
+                    .siblings('input')
+                    .first()
+                    .attr('placeholder');
+               
+                $(labels[i]).html(ph);
+            });
+        }
+
+        $(document).ready(function () {
+            $('.floating-placeholder input').keyup(function () {
+                var input = $(this).val();
+                if (input) $(this).parent().addClass('float');
+                else $(this).parent().removeClass('float');
+            });
+
+            $('#form').submit(function (e) {
+                e.preventDefault();
+            });
+
+            $('.floating-placeholder input').each(function (i) {
+                var input = $(this).val();
+                if (input) $(this).parent().addClass('float');
+                else $(this).parent().removeClass('float');
+            });
+
+            $("form").on("reset", function () {
+                console.log('reset');
+                $('.floating-placeholder input').each(function (i) {
+                    $(this).parent().addClass('float');
+                });
+                $('.floating-placeholder input').each(function (i) {
+                    var input = $(this).val();
+                    if (input) $(this).parent().addClass('float');
+                    else $(this).parent().removeClass('float');
+                });
+
+
+            });
+            initTricks();
+        })
+
+
+    </script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>G-Cladd</h3>
+                <strong>GC</strong>
+            </div>
+            {{sidebar_url}}
+            {{cart_type}}
+            {% include sidebar_url %}
+        </nav>
+            <div id="content">
+                <!-- Navbar  -->
+                <nav class="navbar navbar-expand-lg navbar-light ">
+                    <div class="container-fluid">
+                        <button type="button" id="sidebarCollapse" class="btn btn-info">
+                            <i class="fas fa-align-left"></i>
+                        </button>
+                        &nbsp;
+                        &nbsp;
+                        {{date}}
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                            <ul class="nav navbar-nav ml-auto">
+
+                                <li>
+
+
+                                </li>
+                                <a class="nav-link" href="{% url 'view' %}" title="Profile">
+                                    <li class="nav-item">
+
+                                        {{user.username}}
+
+                                    </li>
+                                </a>
+
+                                <a href="{% url 'view' %}" title="Profile">
+                                    <li class="nav-item navbar-btn">
+
+
+                                        <img class="rounded-circle" style="width:32px;height:32px;" src=" {{user.profile.profile_picture.url}}">
+
+
+                                    </li>
+                                </a>
+
+                                {% ifequal can_use_cart "True"%}
+                                <a href="{% url 'cart_view' cart_type %}" title="Cart">
+                                    <li class="nav-item navbar-btn">
+
+                                        <i class="fas fa-shopping-cart fa-2x"></i>
+
+
+                                    </li>
+                                </a>
+                                {%endifequal%}
+                                <a href="{% url 'inventory'  %}" title="Inventory">
+                                    <li class="nav-item navbar-btn">
+
+                                        <i class="fas fa-warehouse fa-2x"></i>
+
+
+                                    </li>
+                                </a>
+
+
+                               
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <!-- Page Content  -->
+                {% if form.errors %}
+                <div class="alert alert-danger" id="myWish">
+                    {% for field in form %}
+                    {% for error in field.errors %}
+
+                    <strong>{{field.label}}:{{ error|escape }}</strong><br />
+
+                    {% endfor %}
+                    {% endfor %}
+
+
+                    {% for error in form.non_field_errors %}
+
+                    <strong>{{ error|escape }}</strong>
+
+                    {% endfor %}
+                </div>
+                <br />
+                {% endif %}
+
+                {%if messages %}
+                {% for message in messages %}
+                <span style="width:inherit;" class="alert alert-{{message.tags}}">
+                    {{message}}
+                </span>
+                {% endfor %}
+                {%else%}
+                <br />
+                {% endif %}
+
+
+
+
+                <div class="container-fluid">
+                    
+                    {% block content %}
+
+                    {% endblock %}
+                    
+                </div>
+            </div>
+    </div>
+</body>
+</html>
+
+
+
+
